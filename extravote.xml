@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="content">
+	<name>PLG_CONTENT_EXTRAVOTE</name>
+	<author>Vladimir Maidanichenko</author>
+	<creationDate>2012-10-23</creationDate>
+	<copyright>Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>support@joomlamaster.org.ua</authorEmail>
+	<authorUrl>joomlamaster.org.ua</authorUrl>
+	<version>3.0.0</version>
+	<description>PLG_CONTENT_EXTRAVOTE_XML_DESCRIPTION</description>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">assets/install.sql</file>
+		</sql>
+	</install>
+	<!--<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">assets/uninstall.sql</file>
+		</sql>
+	</uninstall>-->
+	<files>
+		<filename plugin="extravote">extravote.php</filename>
+		<filename>index.html</filename>
+		<folder>assets</folder>
+		<folder>images</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_extravote.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_extravote.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_extravote.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_extravote.sys.ini</language>
+		<language tag="uk-UA">uk-UA/uk-UA.plg_content_extravote.ini</language>
+		<language tag="uk-UA">uk-UA/uk-UA.plg_content_extravote.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="display" type="list"
+					default="0"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_DISPLAY_MAIN_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_DISPLAY_MAIN_DESC">
+					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_AFTER_TITLE</option>
+					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_AFTER_CONTENT</option>
+  	    			<option value="2">JHIDE</option>
+				</field>				
+				<field name="hide" 
+				  type="radio"
+				  class="btn-group"
+					default="0"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_HIDE_IN_BLOG_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_HIDE_IN_BLOG_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>							
+				<field name="filteringspacer1" type="spacer" hr="true" />				
+				<field name="extra" type="list"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_USE_CODE_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_USE_CODE_DESC">
+					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE_NEVER</option>
+					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE_ALWAYS</option>
+					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE_HIDE</option>
+				</field>				
+				<field name="article_id"
+				 type="radio"
+				class="btn-group"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_ARTICLE_ID_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_ARTICLE_ID_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>				
+				<field name="main" type="list"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_USE_CODE2_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_USE_CODE2_DESC">
+					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE2_NEVER</option>
+					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE2_ALWAYS</option>
+					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_USE_CODE2_HIDE</option>
+				</field>							
+				<field name="filteringspacer2" type="spacer" hr="true" />			
+				<field name="show_rating" type="list"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_AVERAGE_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_AVERAGE_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_AVERAGE_MAIN</option>
+					<option value="3">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_AVERAGE_EXTRA</option>
+				</field>				
+				<field name="rating_mode" 
+				  type="radio"
+					class="btn-group"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_AVERAGE_MODE_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_AVERAGE_MODE_DESC">
+					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_AVERAGE_MODE_PERCENT</option>
+					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_AVERAGE_MODE_FIVE</option>
+				</field>				
+				<field name="show_counter" type="list"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_COUNTER_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_COUNTER_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_COUNTER_MAIN</option>
+					<option value="3">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_COUNTER_EXTRA</option>
+				</field>				
+				<field name="show_unrated" 
+				  type="radio"
+					class="btn-group"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_UNRATED_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_UNRATED_DESC">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>				
+				<field name="stars"
+				 type="radio"
+				 class="btn-group"
+					default="10"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_HALF_STARS_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_HALF_STARS_DESC">
+					<option value="10">JYES</option>
+					<option value="5">JNO</option>
+				</field>							
+				<field name="filteringspacer3" type="spacer" hr="true" />				
+				<field name="access" 
+				  type="radio"
+				  class="btn-group"
+					default="0"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_ACCESS_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_ACCESS_DESC">
+					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_ACCESS_PUBLIC</option>
+					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_ACCESS_REGISTERED</option>
+				</field>				
+				<field name="css"
+				 type="radio"
+				 class="btn-group"
+					default="1"
+					label="PLG_CONTENT_EXTRAVOTE_FIELD_LOAD_STYLESHEET_LABEL"
+					description="PLG_CONTENT_EXTRAVOTE_FIELD_LOAD_STYLESHEET_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
