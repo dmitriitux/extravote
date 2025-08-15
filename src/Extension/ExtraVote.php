@@ -85,10 +85,6 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 
 	protected function renderStars($id, $rating_sum, $rating_count, $ip)
 	{
-		$document = $this->getApplication()->getDocument();
-
-		$document->addScript(URI::root(true) . '/plugins/content/extravote/assets/extravote.js');
-
 		$show_counter = $this->params->get('show_counter', 1);
 		$show_rating  = $this->params->get('show_rating', 1);
 		$rating_mode  = $this->params->get('rating_mode', 1);
@@ -129,7 +125,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 
 		for ($i = 0, $j = 5 / $stars; $i < $stars; $i++, $j += 5 / $stars) :
 			$spans .= "
-      <span class=\"extravote-star\"><a href=\"javascript:void(null)\" onclick=\"javascript:JVXVote(" . $id . "," . $j . "," . $rating_sum . "," . $rating_count . ",'" . $show_counter . "," . $show_rating . "," . $rating_mode . ");\" title=\"" . Text::_(
+      <span class=\"extravote-star\"><a href=\"javascript:void(null)\" onclick=\"javascript:JVXVote(" . $id . "," . $j . "," . $rating_sum . "," . $rating_count . "," . $show_counter . "," . $show_rating . "," . $rating_mode . ");\" title=\"" . Text::_(
 					'PLG_SYSTEM_EXTRAVOTE_RATING_' . ($j * 10) . '_OUT_OF_5'
 				) . "\" class=\"ev-" . ($j * 10) . "-stars\">1</a></span>";
 		endfor;
@@ -239,7 +235,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 				$votesdb = $db->loadObject();
 				if (!$votesdb)
 				{
-					$query = "INSERT INTO #__content_extravote ( content_id, extra_id, lastip, rating_sum, rating_count )"
+					$query = "INSERT INTO #__content_extravote ( content_id, lastip, rating_sum, rating_count )"
 						. "\n VALUES ( " . $cid . ", " . $db->Quote(
 							$currip
 						) . ", " . $user_rating . ", 1 )";
