@@ -1,7 +1,7 @@
-function JVXVote(id,i,total,total_count,xid,show_counter,show_rating,rating_mode){
+function JVXVote(id,i,total,total_count,show_counter,show_rating,rating_mode){
     var currentURL = window.location;
     var live_site = currentURL.protocol+'//'+currentURL.host+ev_basefolder;
-    var info = document.getElementById('extravote_'+id+'_'+xid);
+    var info = document.getElementById('extravote_'+id);
     var text = info.innerHTML;
     if (info.className != 'extravote-info voted') {
         info.innerHTML='<img src="'+live_site+'/media/plg_system_extravote/img/loading.gif" border="0" align="absmiddle" /> '+'<small>'+extravote_text[1]+'</small>';
@@ -33,13 +33,13 @@ function JVXVote(id,i,total,total_count,xid,show_counter,show_rating,rating_mode
                             else
                                 text+=extravote_text[6].replace('%s', newtotal );
                         }
-                        document.getElementById('rating_'+id+'_'+xid).style.width=parseInt(newrating*20)+'%';
+                        document.getElementById('rating_'+id).style.width=parseInt(newrating*20)+'%';
                     }
                     info.innerHTML=text;
                 },2000);
             }
         }
-        ajax.open("GET",live_site+"/index.php?option=com_ajax&plugin=extravote&group=system&format=raw&user_rating="+i+"&cid="+id+"&xid="+xid,true);
+        ajax.open("GET",live_site+"/index.php?option=com_ajax&plugin=extravote&group=system&format=raw&user_rating="+i+"&cid="+id,true);
         ajax.send(null);
     }
     info.className = 'extravote-info voted';
