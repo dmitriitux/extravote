@@ -8,7 +8,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 use Joomla\Event\DispatcherInterface;
-use Joomla\Plugin\Editors\RadicalEditor\Extension\RadicalEditor;
+use Joomla\Plugin\System\ExtraVote\Extension\ExtraVote;
 
 return new class implements ServiceProviderInterface {
 
@@ -23,10 +23,10 @@ return new class implements ServiceProviderInterface {
 	{
 		$container->set(PluginInterface::class,
 			function (Container $container) {
-				$plugin  = PluginHelper::getPlugin('editors', 'radicaleditor');
+				$plugin  = PluginHelper::getPlugin('system', 'extravote');
 				$subject = $container->get(DispatcherInterface::class);
 
-				$plugin = new RadicalEditor($subject, (array) $plugin);
+				$plugin = new ExtraVote($subject, (array) $plugin);
 				$plugin->setApplication(Factory::getApplication());
 
 				return $plugin;
