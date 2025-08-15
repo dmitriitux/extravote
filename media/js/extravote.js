@@ -39,7 +39,7 @@ function JVXVote(id,i,total,total_count,xid,show_counter,show_rating,rating_mode
 				},2000);
 			}
 		}
-		ajax.open("GET",live_site+"/index.php?option=com_ajax&plugin=extravote&group=content&format=raw&user_rating="+i+"&cid="+id+"&xid="+xid,true);
+		ajax.open("GET",live_site+"/index.php?option=com_ajax&plugin=extravote&group=system&format=raw&user_rating="+i+"&cid="+id+"&xid="+xid,true);
 		ajax.send(null);
 	}
 	info.className = 'extravote-info voted';
