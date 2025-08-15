@@ -32,6 +32,7 @@
 		<language tag="ru-RU">ru-RU/ru-RU.plg_system_extravote.sys.ini</language>
 	</languages>
     <media destination="plg_system_extravote" folder="media">
+        <folder>css</folder>
         <folder>img</folder>
         <folder>js</folder>
         <filename>joomla.asset.json</filename>
