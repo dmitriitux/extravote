@@ -8,16 +8,13 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Uri\Uri;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Event\SubscriberInterface;
 
 class ExtraVote extends CMSPlugin implements SubscriberInterface
 {
 
 	protected $autoloadLanguage = true;
-
-	protected int $article_id;
-
-	protected string $view;
 
 	public static function getSubscribedEvents(): array
 	{
@@ -27,9 +24,37 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		];
 	}
 
+	public function onAfterRender()
+	{
+		$admin      = $this->getApplication()->isClient('administrator');
+		$customizer = !empty($this->getApplication()->input->get('customizer'));
+
+		if ($admin || $customizer)
+		{
+			return;
+		}
+
+		$body = $this->getApplication()->getBody();
+
+		if (!str_contains($body, '{extravote'))
+		{
+			return;
+		}
+
+		$regex = "/{extravote\s*([0-9]+)}/i";
+
+		$body = preg_replace_callback(
+			$regex,
+			[$this, 'replacer'],
+			$body
+		);
+
+		$this->getApplication()->setBody($body);
+	}
+
 	protected function renderStars($id, $rating_sum, $rating_count, $xid, $ip)
 	{
-		$document = JFactory::getDocument();
+		$document = $this->getApplication()->getDocument();
 
 		$document->addScript(URI::root(true) . '/plugins/content/extravote/assets/extravote.js');
 
@@ -48,7 +73,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		{
 			$document->addScriptDeclaration(
 				"
-				var ev_basefolder = '" . JURI::base(true) . "';
+				var ev_basefolder = '" . Uri::base(true) . "';
 				var extravote_text=Array('" .
 				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_NO_AJAX') . "','" .
 				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_LOADING') . "','" .
@@ -159,37 +184,9 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		return $html;
 	}
 
-	protected function onAfterRender()
-	{
-		$admin      = $this->getApplication()->isClient('administrator');
-		$customizer = !empty($this->getApplication()->input->get('customizer'));
-
-		if ($admin || $customizer)
-		{
-			return;
-		}
-
-		$body = $this->getApplication()->getBody();
-
-		if (!str_contains($body, '{extravote'))
-		{
-			return;
-		}
-
-		$regex = "/{extravote\s*([0-9]+)}/i";
-
-		$body = preg_replace_callback(
-			$regex,
-			[$this, 'replacer'],
-			$body
-		);
-
-		$this->getApplication()->setBody($body);
-	}
-
 	protected function replacer(&$matches)
 	{
-		$db  = JFactory::getDBO();
+		$db    = Factory::getContainer()->get(DatabaseInterface::class);
 		$cid = 0;
 		$xid = 0;
 
@@ -262,7 +259,8 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 				echo 'fail';
 				$this->getApplication()->close();
 			}
-			$db = Factory::getDbo();
+
+			$db    = Factory::getContainer()->get(DatabaseInterface::class);
 			if ($user_rating >= 0.5 && $user_rating <= 5)
 			{
 				$currip = $_SERVER['REMOTE_ADDR'];
