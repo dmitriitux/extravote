@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" group="system" method="upgrade">
-	<name>PLG_CONTENT_EXTRAVOTE</name>
+	<name>PLG_SYSTEM_EXTRAVOTE</name>
 	<author>Vladimir Maidanichenko</author>
 	<creationDate>2012-10-23</creationDate>
 	<copyright>Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
@@ -8,7 +8,7 @@
 	<authorEmail>support@joomlamaster.org.ua</authorEmail>
 	<authorUrl>joomlamaster.org.ua</authorUrl>
 	<version>4.0.0</version>
-    <description>PLG_CONTENT_EXTRAVOTE_XML_DESCRIPTION</description>
+    <description>PLG_SYSTEM_EXTRAVOTE_XML_DESCRIPTION</description>
     <namespace path="src">Joomla\Plugin\System\ExtraVote</namespace>
     <install>
 		<sql>
@@ -26,12 +26,10 @@
         <folder>services</folder>
     </files>
 	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.plg_content_extravote.ini</language>
-		<language tag="en-GB">en-GB/en-GB.plg_content_extravote.sys.ini</language>
-		<language tag="ru-RU">ru-RU/ru-RU.plg_content_extravote.ini</language>
-		<language tag="ru-RU">ru-RU/ru-RU.plg_content_extravote.sys.ini</language>
-		<language tag="uk-UA">uk-UA/uk-UA.plg_content_extravote.ini</language>
-		<language tag="uk-UA">uk-UA/uk-UA.plg_content_extravote.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_extravote.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_extravote.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_system_extravote.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_system_extravote.sys.ini</language>
 	</languages>
     <media destination="plg_system_extravote" folder="media">
         <folder>img</folder>
@@ -43,37 +41,37 @@
 			<fieldset name="basic">
 				<field name="show_rating" type="list"
 					default="1"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_AVERAGE_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_AVERAGE_DESC">
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_AVERAGE_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_AVERAGE_DESC">
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
-					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_AVERAGE_MAIN</option>
-					<option value="3">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_AVERAGE_EXTRA</option>
+					<option value="2">PLG_SYSTEM_EXTRAVOTE_OPTION_SHOW_AVERAGE_MAIN</option>
+					<option value="3">PLG_SYSTEM_EXTRAVOTE_OPTION_SHOW_AVERAGE_EXTRA</option>
 				</field>				
 				<field name="rating_mode" 
 				  type="radio"
 					class="btn-group"
 					default="1"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_AVERAGE_MODE_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_AVERAGE_MODE_DESC">
-					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_AVERAGE_MODE_PERCENT</option>
-					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_AVERAGE_MODE_FIVE</option>
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_AVERAGE_MODE_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_AVERAGE_MODE_DESC">
+					<option value="0">PLG_SYSTEM_EXTRAVOTE_OPTION_AVERAGE_MODE_PERCENT</option>
+					<option value="1">PLG_SYSTEM_EXTRAVOTE_OPTION_AVERAGE_MODE_FIVE</option>
 				</field>				
 				<field name="show_counter" type="list"
 					default="1"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_COUNTER_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_COUNTER_DESC">
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_COUNTER_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_COUNTER_DESC">
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
-					<option value="2">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_COUNTER_MAIN</option>
-					<option value="3">PLG_CONTENT_EXTRAVOTE_OPTION_SHOW_COUNTER_EXTRA</option>
+					<option value="2">PLG_SYSTEM_EXTRAVOTE_OPTION_SHOW_COUNTER_MAIN</option>
+					<option value="3">PLG_SYSTEM_EXTRAVOTE_OPTION_SHOW_COUNTER_EXTRA</option>
 				</field>				
 				<field name="show_unrated" 
 				  type="radio"
 					class="btn-group"
 					default="1"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_UNRATED_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_SHOW_UNRATED_DESC">
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_UNRATED_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_SHOW_UNRATED_DESC">
 					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
 				</field>				
@@ -81,8 +79,8 @@
 				 type="radio"
 				 class="btn-group"
 					default="10"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_HALF_STARS_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_HALF_STARS_DESC">
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_HALF_STARS_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_HALF_STARS_DESC">
 					<option value="10">JYES</option>
 					<option value="5">JNO</option>
 				</field>							
@@ -91,17 +89,17 @@
 				  type="radio"
 				  class="btn-group"
 					default="0"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_ACCESS_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_ACCESS_DESC">
-					<option value="0">PLG_CONTENT_EXTRAVOTE_OPTION_ACCESS_PUBLIC</option>
-					<option value="1">PLG_CONTENT_EXTRAVOTE_OPTION_ACCESS_REGISTERED</option>
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_ACCESS_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_ACCESS_DESC">
+					<option value="0">PLG_SYSTEM_EXTRAVOTE_OPTION_ACCESS_PUBLIC</option>
+					<option value="1">PLG_SYSTEM_EXTRAVOTE_OPTION_ACCESS_REGISTERED</option>
 				</field>				
 				<field name="css"
 				 type="radio"
 				 class="btn-group"
 					default="1"
-					label="PLG_CONTENT_EXTRAVOTE_FIELD_LOAD_STYLESHEET_LABEL"
-					description="PLG_CONTENT_EXTRAVOTE_FIELD_LOAD_STYLESHEET_DESC">
+					label="PLG_SYSTEM_EXTRAVOTE_FIELD_LOAD_STYLESHEET_LABEL"
+					description="PLG_SYSTEM_EXTRAVOTE_FIELD_LOAD_STYLESHEET_DESC">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>

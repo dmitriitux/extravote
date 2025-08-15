@@ -41,6 +41,17 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 			return;
 		}
 
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+		$wa->getRegistry()
+			->addExtensionRegistryFile('plg_system_extravote');
+
+		$wa->useScript('plg_system_extravote.index');
+
+		if ((int) $this->params->get('css', 1))
+		{
+			$wa->useStyle('plg_system_extravote.editor');
+		}
+
 		$regex = "/{extravote\s*([0-9]+)}/i";
 
 		$body = preg_replace_callback(
@@ -186,7 +197,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 
 	protected function replacer(&$matches)
 	{
-		$db    = Factory::getContainer()->get(DatabaseInterface::class);
+		$db  = Factory::getContainer()->get(DatabaseInterface::class);
 		$cid = 0;
 		$xid = 0;
 
@@ -260,7 +271,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 				$this->getApplication()->close();
 			}
 
-			$db    = Factory::getContainer()->get(DatabaseInterface::class);
+			$db = Factory::getContainer()->get(DatabaseInterface::class);
 			if ($user_rating >= 0.5 && $user_rating <= 5)
 			{
 				$currip = $_SERVER['REMOTE_ADDR'];
