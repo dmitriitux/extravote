@@ -55,6 +55,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 
 	public function onBeforeRender()
 	{
+
 		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 		$wa->getRegistry()
 			->addExtensionRegistryFile('plg_system_extravote');
@@ -65,6 +66,21 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		{
 			$wa->useStyle('plg_system_extravote.style');
 		}
+
+		$wa->addInlineScript("
+            var ev_basefolder = '".URI::base(true)."';
+            var extravote_text=Array('".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_NO_AJAX')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_LOADING')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_THANKS')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_LOGIN')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_RATED')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTES')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTE')."','".
+			TEXT::_('PLG_SYSTEM_EXTRAVOTE_LABEL_RATING').
+			"');
+        ");
+
 	}
 
 	protected function renderStars($id, $rating_sum, $rating_count, $xid, $ip)
@@ -90,14 +106,14 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 				"
 				var ev_basefolder = '" . Uri::base(true) . "';
 				var extravote_text=Array('" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_NO_AJAX') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_LOADING') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_THANKS') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_LOGIN') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_MESSAGE_RATED') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_LABEL_VOTES') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_LABEL_VOTE') . "','" .
-				Text::_('PLG_CONTENT_EXTRAVOTE_LABEL_RATING') .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_NO_AJAX') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_LOADING') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_THANKS') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_LOGIN') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_MESSAGE_RATED') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTES') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTE') . "','" .
+				Text::_('PLG_SYSTEM_EXTRAVOTE_LABEL_RATING') .
 				"');
 			"
 			);
@@ -151,7 +167,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		for ($i = 0, $j = 5 / $stars; $i < $stars; $i++, $j += 5 / $stars) :
 			$spans .= "
       <span class=\"extravote-star\"><a href=\"javascript:void(null)\" onclick=\"javascript:JVXVote(" . $id . "," . $j . "," . $rating_sum . "," . $rating_count . ",'" . $xid . "'," . $show_counter . "," . $show_rating . "," . $rating_mode . ");\" title=\"" . Text::_(
-					'PLG_CONTENT_EXTRAVOTE_RATING_' . ($j * 10) . '_OUT_OF_5'
+					'PLG_SYSTEM_EXTRAVOTE_RATING_' . ($j * 10) . '_OUT_OF_5'
 				) . "\" class=\"ev-" . ($j * 10) . "-stars\">1</a></span>";
 		endfor;
 
@@ -177,18 +193,18 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 			{
 				$rating = number_format($rating, 2);
 			}
-			$html .= Text::sprintf('PLG_CONTENT_EXTRAVOTE_LABEL_RATING', $rating);
+			$html .= Text::sprintf('PLG_SYSTEM_EXTRAVOTE_LABEL_RATING', $rating);
 		}
 
 		if ($show_counter > 0)
 		{
 			if ($rating_count != 1)
 			{
-				$html .= Text::sprintf('PLG_CONTENT_EXTRAVOTE_LABEL_VOTES', $rating_count);
+				$html .= Text::sprintf('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTES', $rating_count);
 			}
 			else
 			{
-				$html .= Text::sprintf('PLG_CONTENT_EXTRAVOTE_LABEL_VOTE', $rating_count);
+				$html .= Text::sprintf('PLG_SYSTEM_EXTRAVOTE_LABEL_VOTE', $rating_count);
 			}
 		}
 
