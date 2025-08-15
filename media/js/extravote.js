@@ -1,11 +1,10 @@
-/*---------------# plg_extravote - ExtraVote Plugin---------------------------------------------------*/
 function JVXVote(id,i,total,total_count,xid,show_counter,show_rating,rating_mode){
 	var currentURL = window.location;
 	var live_site = currentURL.protocol+'//'+currentURL.host+ev_basefolder;
 	var info = document.getElementById('extravote_'+id+'_'+xid);
 	var text = info.innerHTML;
 	if (info.className != 'extravote-info voted') {
-		info.innerHTML='<img src="'+live_site+'/plugins/content/extravote/images/loading.gif" border="0" align="absmiddle" /> '+'<small>'+extravote_text[1]+'</small>';
+		info.innerHTML='<img src="'+live_site+'/media/plg_system_extravote/img/loading.gif" border="0" align="absmiddle" /> '+'<small>'+extravote_text[1]+'</small>';
 		var ajax=new XMLHttpRequest();
 		ajax.onreadystatechange=function() {
 		var response;

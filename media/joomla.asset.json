@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "plg_system_extravote",
+  "version": "1.0.0",
+  "description": "ExtraVote for Joomla!",
+  "license": "GPL-3.0-or-later",
+  "assets": [
+    {
+      "name": "plg_system_extravote.index",
+      "type": "script",
+      "uri": "plg_system_extravote/extravote.js",
+      "attributes": {
+        "defer": true,
+        "type": "module"
+      },
+      "version": "auto"
+    },
+  ]
+}
