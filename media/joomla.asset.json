@@ -6,7 +6,7 @@
     "license": "GPL-3.0-or-later",
     "assets": [
         {
-            "name": "plg_system_extravote.index",
+            "name": "plg_system_extravote.js",
             "type": "script",
             "uri": "plg_system_extravote/extravote.js",
             "attributes": {
@@ -16,7 +16,7 @@
             "version": "auto"
         },
         {
-            "name": "plg_system_extravote.editor",
+            "name": "plg_system_extravote.style",
             "type": "style",
             "uri": "plg_system_extravote/extravote.css",
             "attributes": {

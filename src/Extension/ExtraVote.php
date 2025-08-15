@@ -41,17 +41,6 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 			return;
 		}
 
-		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-		$wa->getRegistry()
-			->addExtensionRegistryFile('plg_system_extravote');
-
-		$wa->useScript('plg_system_extravote.index');
-
-		if ((int) $this->params->get('css', 1))
-		{
-			$wa->useStyle('plg_system_extravote.editor');
-		}
-
 		$regex = "/{extravote\s*([0-9]+)}/i";
 
 		$body = preg_replace_callback(
@@ -61,6 +50,20 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		);
 
 		$this->getApplication()->setBody($body);
+	}
+
+	public function onBeforeRender()
+	{
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+		$wa->getRegistry()
+			->addExtensionRegistryFile('plg_system_extravote');
+
+		$wa->useScript('plg_system_extravote.js');
+
+		if ((int) $this->params->get('css', 1))
+		{
+			$wa->useStyle('plg_system_extravote.style');
+		}
 	}
 
 	protected function renderStars($id, $rating_sum, $rating_count, $xid, $ip)
