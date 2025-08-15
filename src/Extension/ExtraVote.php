@@ -21,6 +21,7 @@ class ExtraVote extends CMSPlugin implements SubscriberInterface
 		return [
 			'onAjaxExtravote' => 'onAjaxExtravote',
 			'onAfterRender'   => 'onAfterRender',
+			'onBeforeRender'  => 'onBeforeRender',
 		];
 	}
 
